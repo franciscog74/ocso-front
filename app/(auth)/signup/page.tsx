@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function SignupPage() {
     return (
-        <div className="bg-orange-500 px-10 py-2 rounded-md w-96">
+        <form className="bg-orange-500 px-10 py-2 rounded-md w-96">
             <p className="text-2xl my-4 text-white">Registrarse</p>
             <div className="flex flex-col gap-2 my-4">
                 <Input label="Email" type="email" isRequired={true} size="sm" />
@@ -17,6 +17,6 @@ export default function SignupPage() {
                     <Link href="./login" className="text-red-600 underline">Inicia sesión</Link>
                 </p>
             </div>
-        </div>
+        </form>
     );
 }

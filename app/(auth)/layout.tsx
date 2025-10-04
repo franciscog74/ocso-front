@@ -14,6 +14,7 @@ export default  function AuthLayout({
                         alt="Logo de Ocso"
                         width={250}
                         height={0}
+                        draggable={false}
                     />
                 </div>
                 {children}
