@@ -3,10 +3,10 @@ import Sidebar from "./_components/_sidebar/Sidebar";
 
 export default function DashboardLayout({
     children,
-    count
+    locations
 }: {
     children: React.ReactNode,
-    count: React.ReactNode
+    locations: React.ReactNode
 }) {
     return (
         <div className="w-screen h-screen bg-orange-50">
@@ -14,7 +14,7 @@ export default function DashboardLayout({
             <div className="flex flex-row items-center">
                 <Sidebar />
                 {children}
-                {count}
+                {locations}
             </div>
         </div>
     );
