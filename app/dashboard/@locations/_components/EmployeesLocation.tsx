@@ -2,19 +2,21 @@ import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
-import axios from "axios";
 
 export default async function EmployeesLocation({ store }: { store: string | string[] | undefined }) {
     if (!store)
         return null;
-    const { data } = await axios.get<Employee[]>(`${API_URL}/employees/location/${store}`, {
+    const response = await fetch(`${API_URL}/employees/location/${store}`, {
+        method: "GET",
         headers: {
             ...authHeaders()
+        },
+        next: {
+            tags: ["dashboard:locations:employees"]
         }
-    }).catch(e => {
-        return { data: undefined };
     });
-    if (!data)
+    const data: Employee[] = await response.json();
+    if (response.status === 404 || !data)
         return null;
     return data.map((employee) => {
         return (

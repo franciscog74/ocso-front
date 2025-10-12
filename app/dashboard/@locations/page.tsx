@@ -1,5 +1,4 @@
 import { API_URL } from "@/constants";
-import axios from "axios";
 import { Location } from "@/entities";
 import SelectLocation from "./_components/SelectLocation";
 import LocationCard from "./_components/LocationCard";
@@ -12,11 +11,12 @@ export default async function LocationsPage({
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-    const { data } = await axios.get<Location[]>(`${API_URL}/locations`, {
+    const response = await fetch(`${API_URL}/locations`, {
         headers: {
             ...authHeaders()
         }
     }).catch();
+    const data: Location[] = await response.json();
     data.unshift({
         locationId: 0,
         locationName: "Ninguna",

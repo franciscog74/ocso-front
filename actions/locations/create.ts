@@ -2,7 +2,7 @@
 
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
-import axios from "axios";
+import { revalidateTag } from "next/cache";
 
 export async function createLocation(formData: FormData) {
     const location: any = {};
@@ -19,9 +19,13 @@ export async function createLocation(formData: FormData) {
         }
     }
     location.locationLatLng = latLng;
-    await axios.post(`${API_URL}/locations`, location, {
+    const response = await fetch(`${API_URL}/locations`, {
+        method: "POST",
+        body: JSON.stringify(location),
         headers: {
             ...authHeaders()
         }
     }).catch();
+    if (response.status === 201)
+        revalidateTag("dashboard:locations");
 }
