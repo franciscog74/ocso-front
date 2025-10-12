@@ -11,7 +11,9 @@ export default function DashboardPage({
                 {searchParams.store ? (
                     <EmployeesLocation store={(searchParams)?.store} />
                 ) : (
-                    <p className="w-full text-2xl px-2 text-center">Selecciona una tienda para ver los empleados</p>
+                    <p className="w-full text-2xl px-2 text-center py-5">
+                        Selecciona una tienda para ver los empleados
+                    </p>
                 )}
             </div>
         </div>

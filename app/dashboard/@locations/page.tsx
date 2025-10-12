@@ -1,20 +1,20 @@
-import { API_URL, TOKEN_NAME } from "@/constants";
+import { API_URL } from "@/constants";
 import axios from "axios";
-import { cookies } from "next/headers";
 import { Location } from "@/entities";
 import SelectLocation from "./_components/SelectLocation";
 import LocationCard from "./_components/LocationCard";
+import FormNewLocation from "./_components/FormNewLocation";
+import DeleteLocationButton from "./_components/DeleteLocationButton";
+import { authHeaders } from "@/helpers/authHeaders";
 
 export default async function LocationsPage({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
-    const userCookies = cookies();
-    const token = userCookies.get(TOKEN_NAME)?.value;
     const { data } = await axios.get<Location[]>(`${API_URL}/locations`, {
         headers: {
-            Authorization: `Bearer ${token}`
+            ...authHeaders()
         }
     }).catch();
     data.unshift({
@@ -25,12 +25,20 @@ export default async function LocationsPage({
     });
     return (
         <div className="w-8/12">
-            <div className="w-full flex flex-col items-center h-[90vh] bg-red-50">
+            <div className="w-full flex flex-col items-center h-[90vh] bg-red-50 overflow-hidden overflow-y-auto">
                 <div className="w-1/2 my-10">
                     <SelectLocation locations={data} store={searchParams?.store} />
                 </div>
                 <div className="w-8/12">
                     <LocationCard store={searchParams?.store}/>
+                </div>
+                {searchParams.store ? null : (
+                    <div className="w-6/12 my-10">
+                        <FormNewLocation />
+                    </div>
+                )}
+                <div>
+                    <DeleteLocationButton store={searchParams?.store} />
                 </div>
             </div>
         </div>
