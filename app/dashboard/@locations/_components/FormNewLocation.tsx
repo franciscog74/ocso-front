@@ -11,6 +11,7 @@ export default async function FormNewLocation() {
     };
 
     const managerResponse = await fetch(`${API_URL}/managers`, {
+        method: "GET",
         headers,
         next: {
             tags: ["dashboard:managers"]
@@ -19,6 +20,7 @@ export default async function FormNewLocation() {
     const managerData: Manager[] = await managerResponse.json();
 
     const locationResponse = await fetch(`${API_URL}/locations`, {
+        method: "GET",
         headers,
         next: {
             tags: ["dashboard:locations"]

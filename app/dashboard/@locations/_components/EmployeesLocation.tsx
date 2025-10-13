@@ -4,7 +4,7 @@ import { authHeaders } from "@/helpers/authHeaders";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
 export default async function EmployeesLocation({ store }: { store: string | string[] | undefined }) {
-    if (!store)
+    if (typeof store !== "string")
         return null;
     const response = await fetch(`${API_URL}/employees/location/${store}`, {
         method: "GET",

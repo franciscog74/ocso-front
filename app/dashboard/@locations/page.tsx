@@ -12,6 +12,7 @@ export default async function LocationsPage({
   searchParams: { [key: string]: string | string[] | undefined }
 }) {
     const response = await fetch(`${API_URL}/locations`, {
+        method: "GET",
         headers: {
             ...authHeaders()
         }
