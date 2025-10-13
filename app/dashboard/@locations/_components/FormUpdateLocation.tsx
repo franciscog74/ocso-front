@@ -1,5 +1,4 @@
 import { Button, Input } from "@nextui-org/react";
-import { createLocation } from "@/actions/locations/create";
 import { API_URL } from "@/constants";
 import SelectManager from "./SelectManager";
 import { Manager, Location } from "@/entities";
@@ -40,12 +39,12 @@ export default async function FormUpdateLocation({ store }: { store: string | st
     return (
         <form action={updateWithStoreId} className="bg-orange-400 py-2 px-10 flex flex-col gap-6 w-full rounded-lg">
             <h1 className="text-3xl text-white text-center">Modificar Tienda</h1>
-            <Input label="Nombre" defaultValue={foundLocation?.locationName} name="locationName" />
-            <Input label="Dirección" defaultValue={foundLocation?.locationAddress} name="locationAddress" />
-            <Input label="Latitud" defaultValue={foundLocation?.locationLatLng[0].toString()} name="locationLat" />
-            <Input label="Longitud" defaultValue={foundLocation?.locationLatLng[1].toString()} name="locationLong" />
+            <Input required={true} label="Nombre" defaultValue={foundLocation?.locationName} name="locationName" />
+            <Input required={true} label="Dirección" defaultValue={foundLocation?.locationAddress} name="locationAddress" />
+            <Input required={true} label="Latitud" defaultValue={foundLocation?.locationLatLng[0].toString()} name="locationLat" />
+            <Input required={true} label="Longitud" defaultValue={foundLocation?.locationLatLng[1].toString()} name="locationLong" />
             <SelectManager defaultManager={foundManager} managers={managerData} locations={locationData} />
-            <Button type="submit" color="primary">Subir</Button>
+            <Button type="submit" color="primary">Actualizar</Button>
         </form>
     );
 }

@@ -30,22 +30,22 @@ export default async function LocationsPage({
         <div className="w-8/12">
             <div className="w-full flex flex-col items-center h-[90vh] bg-red-50 overflow-hidden overflow-y-auto">
                 <div className="w-1/2 my-10">
-                    <SelectLocation locations={data} store={searchParams?.store} />
+                    <SelectLocation locations={data} store={searchParams.store} />
                 </div>
                 <div className="w-8/12">
-                    <LocationCard store={searchParams?.store}/>
+                    <LocationCard store={searchParams.store}/>
                 </div>
                 {searchParams.store ? null : (
                     <div className="w-6/12 my-10">
                         <FormNewLocation />
                     </div>
                 )}
-                <div>
-                    <DeleteLocationButton store={searchParams?.store} />
+                <div className="flex flex-row flex-grow-0 gap-10 items-center">
+                    <UpdateLocation store={searchParams.store}>
+                        <FormUpdateLocation store={searchParams.store} />
+                    </UpdateLocation>
+                    <DeleteLocationButton store={searchParams.store} />
                 </div>
-                <UpdateLocation>
-                    <FormUpdateLocation store={searchParams?.store} />
-                </UpdateLocation>
             </div>
         </div>
     );
