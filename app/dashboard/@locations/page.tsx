@@ -5,6 +5,8 @@ import LocationCard from "./_components/LocationCard";
 import FormNewLocation from "./_components/FormNewLocation";
 import DeleteLocationButton from "./_components/DeleteLocationButton";
 import { authHeaders } from "@/helpers/authHeaders";
+import UpdateLocation from "./_components/UpdateLocation";
+import FormUpdateLocation from "./_components/FormUpdateLocation";
 
 export default async function LocationsPage({
   searchParams,
@@ -41,6 +43,9 @@ export default async function LocationsPage({
                 <div>
                     <DeleteLocationButton store={searchParams?.store} />
                 </div>
+                <UpdateLocation>
+                    <FormUpdateLocation store={searchParams?.store} />
+                </UpdateLocation>
             </div>
         </div>
     );
