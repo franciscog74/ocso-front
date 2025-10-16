@@ -36,7 +36,7 @@ export default async function LocationsPage({
                     <LocationCard store={searchParams.store}/>
                 </div>
                 {searchParams.store ? null : (
-                    <div className="w-6/12 my-10">
+                    <div className="w-6/12">
                         <FormNewLocation />
                     </div>
                 )}

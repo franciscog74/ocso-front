@@ -26,9 +26,12 @@ export default async function LocationCard({ store }: { store: string | string[]
             </CardHeader>
             <Divider />
             <CardBody>
-                <p className="w-full"> Manager: <Link href={{pathname: `/dashboard/managers`}}>
-                    <b>{data.manager?.managerFullName ?? "Ninguno"}</b>
-                </Link></p>
+                <p className="w-full">
+                    Manager: {}
+                    <Link href={{ pathname: `/dashboard/managers/${data.manager?.managerId}` }}>
+                        <b>{data.manager?.managerFullName ?? "Ninguno"}</b>
+                    </Link>
+                </p>
                 <p className="w-full"> Dirección: <b>{data.locationAddress}</b></p>
             </CardBody>
         </Card>
