@@ -42,7 +42,7 @@ export default function LoginPage() {
                         : "Iniciar sesión"
                 }</Button>
                 <p className="text-white">
-                    ¿No tienes una cuenta?
+                    ¿No tienes una cuenta? {}
                     <Link href="./signup" className="text-red-600 underline">Regístrate</Link>
                 </p>
             </div>
