@@ -11,7 +11,10 @@ export default async function createManager(formData: FormData) {
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            manager[key] = value;
+            if (key === "location")
+                manager[key] = +value;
+            else
+                manager[key] = value;
         }
     }
     const response = await fetch(`${API_URL}/managers`, {
