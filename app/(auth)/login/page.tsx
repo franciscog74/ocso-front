@@ -17,6 +17,9 @@ export default function LoginPage() {
             userPassword: formData.get("userPassword")
         };
         const response = await fetch(`${API_URL}/auth/login`, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
             method: "POST",
             body: JSON.stringify(authData),
             credentials: "include"
