@@ -16,6 +16,7 @@ export default function SelectManager({ managers, locations, defaultManager }: S
     ).filter((managerKey) =>
         managerKey !== undefined
     );
+    
     return (
         <Select
             defaultSelectedKeys={(defaultManager === undefined) ? [] : [defaultManager]}

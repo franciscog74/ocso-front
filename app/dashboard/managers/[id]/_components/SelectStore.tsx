@@ -7,21 +7,21 @@ export default function SelectStore({ locations, defaultStore }: {
     defaultStore?: number
 }) {
     const disabledKeys = locations.map((location) =>
-        (location.manager || location.locationId !== defaultStore)
-            ? location.locationId
+        (location.manager && location.locationId !== defaultStore)
+            ? location.locationId.toString()
             : undefined
     ).filter((storeKey) =>
         storeKey !== undefined
     );
     return (
         <Select
-            defaultSelectedKeys={(defaultStore === undefined) ? [] : [defaultStore]}
+            defaultSelectedKeys={(defaultStore === undefined) ? [] : [defaultStore.toString()]}
             name="location"
             label="Tienda"
             disabledKeys={disabledKeys}>
             {locations.map((location) => {
                 return (
-                    <SelectItem key={location.locationId} value={location.locationId}>
+                    <SelectItem key={location.locationId.toString()} value={location.locationId}>
                         {location.locationName}
                     </SelectItem>
                 );
