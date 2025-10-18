@@ -11,12 +11,14 @@ export default async function createManager(formData: FormData) {
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            if (key === "location")
+            if (key === "managerSalary")
                 manager[key] = +value;
             else
                 manager[key] = value;
         }
     }
+    if (!manager.location) delete manager?.location;
+    else manager.location = +manager.location;
     const response = await fetch(`${API_URL}/managers`, {
         method: "POST",
         body: JSON.stringify(manager),

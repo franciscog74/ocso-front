@@ -11,9 +11,15 @@ export default async function updateManager(managerId: string, formData: FormDat
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            manager[key] = value;
+            if (key === "managerSalary")
+                manager[key] = +value;
+            else
+                manager[key] = value;
         }
     }
+    if (!manager.location) delete manager?.location;
+    else manager.location = +manager.location;
+    console.log(typeof manager.location);
     const response = await fetch(`${API_URL}/managers/${managerId}`, {
         method: "PATCH",
         body: JSON.stringify(manager),
@@ -25,6 +31,6 @@ export default async function updateManager(managerId: string, formData: FormDat
     if (response.status === 200){
         revalidateTag("dashboard:managers");
         revalidateTag(`dashboard:managers:${managerId}`);
-        redirect(`/dashboard?store=${managerId}`)
+        redirect(`/dashboard/manager${managerId}`)
     }
 }
