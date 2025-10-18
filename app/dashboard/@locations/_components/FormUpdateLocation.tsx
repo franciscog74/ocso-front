@@ -39,10 +39,10 @@ export default async function FormUpdateLocation({ store }: { store: string | st
     return (
         <form action={updateWithStoreId} className="bg-orange-400 py-2 px-10 flex flex-col gap-6 w-full rounded-lg">
             <h1 className="text-3xl text-white text-center">Modificar Tienda</h1>
-            <Input required={true} label="Nombre" defaultValue={foundLocation?.locationName} name="locationName" />
-            <Input required={true} label="Dirección" defaultValue={foundLocation?.locationAddress} name="locationAddress" />
-            <Input required={true} label="Latitud" defaultValue={foundLocation?.locationLatLng[0].toString()} name="locationLat" />
-            <Input required={true} label="Longitud" defaultValue={foundLocation?.locationLatLng[1].toString()} name="locationLong" />
+            <Input isRequired={true} label="Nombre" defaultValue={foundLocation?.locationName} name="locationName" />
+            <Input isRequired={true} label="Dirección" defaultValue={foundLocation?.locationAddress} name="locationAddress" />
+            <Input isRequired={true} label="Latitud" defaultValue={foundLocation?.locationLatLng[0].toString()} name="locationLat" />
+            <Input isRequired={true} label="Longitud" defaultValue={foundLocation?.locationLatLng[1].toString()} name="locationLong" />
             <SelectManager defaultManager={foundManager} managers={managerData} locations={locationData} />
             <Button type="submit" color="primary">Actualizar</Button>
         </form>
