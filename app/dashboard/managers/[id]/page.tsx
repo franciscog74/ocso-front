@@ -3,6 +3,8 @@ import { Manager } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 import ManagerCard from "./_components/ManagerCard";
 import DeleteManagerButton from "./_components/DeleteManagerButton";
+import UpdateManager from "./_components/UpdateManager";
+import FormUpdateManager from "./_components/FormUpdateManager";
 
 export default async function ManagerPage({
     params: {
@@ -26,9 +28,9 @@ export default async function ManagerPage({
         <div className="flex flex-col gap-10 flex-grow-0">
             <ManagerCard manager={manager} />
             <div className="flex flex-row flex-grow-0 gap-10 items-center justify-center">
-                    {/* <UpdateLocation store={searchParams.store}>
-                        <FormUpdateLocation store={searchParams.store} />
-                    </UpdateLocation> */}
+                    <UpdateManager>
+                        <FormUpdateManager manager={manager} />
+                    </UpdateManager>
                     <DeleteManagerButton managerId={id} />
                 </div>
         </div>
