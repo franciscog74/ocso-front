@@ -33,7 +33,7 @@ export interface Provider {
     providerID: string;
     providerName: string;
     providerEmail: string;
-    providerPhone: string;
+    providerPhone: string | null;
     products?: Product[]
 }
 
