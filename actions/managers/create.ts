@@ -30,6 +30,6 @@ export default async function createManager(formData: FormData) {
     if (response.status === 201){
         const { managerId }: Manager = await response.json();
         revalidateTag("dashboard:managers");
-        redirect(`/dashboard/managers/${managerId}`)
+        redirect(`/dashboard/managers/${managerId}`);
     }
 }

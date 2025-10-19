@@ -32,6 +32,6 @@ export async function createLocation(formData: FormData) {
     if (response.status === 201){
         const { locationId }: Location = await response.json();
         revalidateTag("dashboard:locations");
-        redirect(`/dashboard?store=${locationId}`)
+        redirect(`/dashboard?store=${locationId}`);
     }
 }

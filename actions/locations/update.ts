@@ -32,6 +32,6 @@ export async function updateLocation(store: string, formData: FormData) {
     if (response.status === 200) {
         revalidateTag("dashboard:locations");
         revalidateTag(`dashboard:locations:${store}`);
-        redirect(`/dashboard?store=${store}`)
+        redirect(`/dashboard?store=${store}`);
     }
 }

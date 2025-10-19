@@ -30,6 +30,6 @@ export default async function updateManager(managerId: string, formData: FormDat
     if (response.status === 200){
         revalidateTag("dashboard:managers");
         revalidateTag(`dashboard:managers:${managerId}`);
-        redirect(`/dashboard/managers/${managerId}`)
+        redirect(`/dashboard/managers/${managerId}`);
     }
 }
