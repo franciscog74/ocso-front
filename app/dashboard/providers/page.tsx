@@ -15,11 +15,11 @@ export default async function ProvidersPage() {
     const providers: Provider[] = await response.json();
 
     return (
-        <div className="flex flex-col flex-grow-0 h-[90vh] pt-10">
-            <Button className="w-fit self-center" color="primary">
+        <div className="flex flex-col flex-grow-0 h-[90vh] px-10 pt-10 w-11/12">
+            <Button className="w-fit self-end mb-10" color="primary">
                 <LuPlus size={20} />
             </Button>
-            <div className="w-4/12 flex flex-row flex-wrap px-10 overflow-hidden overflow-y-auto">
+            <div className="w-full flex flex-wrap pb-10 overflow-hidden overflow-y-auto">
                 {providers.map((provider) => (
                     <Link className="hover:scale-105 transition-transform"
                         href={{ pathname: `/dashboard/providers/${provider.providerID}` }}>

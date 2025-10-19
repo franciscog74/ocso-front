@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function ProviderCard({ provider }: { provider: Provider }) {
     return (
-        <Card className="mx-20 py-2">
+        <Card className="mx-10 my-5 py-2">
             <CardHeader>
                 <p className="w-full text-4xl text-center"><b>{provider.providerName}</b></p>
             </CardHeader>
