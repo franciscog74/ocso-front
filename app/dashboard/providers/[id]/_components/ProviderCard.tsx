@@ -11,7 +11,7 @@ export default function ProviderCard({ provider }: { provider: Provider }) {
             <Divider />
             <CardBody className=" text-lg">
                 <p className="w-full">Emial: <b>{provider.providerEmail}</b></p>
-                <p className="w-full">Teléfono: <b>{provider.providerPhone}</b></p>
+                <p className="w-full">Teléfono: <b>{provider.providerPhone ?? "Ninguno"}</b></p>
                 <p className="w-full">Productos: <b>{
                     provider.products?.length ?? 0
                     }</b></p>
