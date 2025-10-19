@@ -28,3 +28,19 @@ export interface Manager {
     location?: Location;
     user: any;
 }
+
+export interface Provider {
+    providerID: string;
+    providerName: string;
+    providerEmail: string;
+    providerPhone: string;
+    products?: Product[]
+}
+
+export interface Product {
+    productID: string;
+    productName: string;
+    price: number;
+    sealCount: number;
+    provider: Provider;
+}
