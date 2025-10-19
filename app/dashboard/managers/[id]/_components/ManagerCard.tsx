@@ -15,7 +15,7 @@ export default function ManagerCard({ manager }: { manager: Manager }) {
                 <p className="w-full">Salario: <b>${manager.managerSalary}</b></p>
                 <p className="w-full">Tienda: {}
                     {manager.location ?
-                    <Link href={{ pathname: "/dashboard", query: { store: manager.location.locationId } }}>
+                    <Link className="underline" href={{ pathname: "/dashboard", query: { store: manager.location.locationId } }}>
                         <b>{manager.location.locationName}</b>
                     </Link>
                     : "Ninguna"
