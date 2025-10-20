@@ -20,12 +20,12 @@ export default async function ProviderPage({ params: { id } }: { params: { id: s
             <div className="w-4/12 self-center">
                 <ProviderCard provider={provider} />
             </div>
-            <div className="w-8/12 flex flex-col py-5 gap-5 overflow-hidden overflow-y-auto">
+            <div className="w-8/12 flex flex-wrap py-5 gap-5 overflow-hidden overflow-y-auto">
                 {provider.products ?
                     provider.products.map((product) =>(
                         <Link href={{pathname: `/dashboard/products/${product.productID}`}}
                             key={product.productID}
-                            className="hover:scale-105 transition-transform">
+                            className="hover:scale-105 transition-transform h-fit">
                             <ProductCard product={product} />
                         </Link>
                     )) :
