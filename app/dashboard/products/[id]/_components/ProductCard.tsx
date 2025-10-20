@@ -3,9 +3,9 @@ import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 
 export default function ProductCard({ product }: { product: Product }) {
     return (
-        <Card className="mx-10 my-5 py-2 overflow-visible min-w-48">
+        <Card className="mx-10 my-5 py-2 overflow-visible">
             <CardHeader>
-                <p className="w-full text-xl text-center"><b>{product.productName}</b></p>
+                <p className="w-full text-xl text-center px-4"><b>{product.productName}</b></p>
             </CardHeader>
             <Divider />
             <CardBody className=" text-lg">
