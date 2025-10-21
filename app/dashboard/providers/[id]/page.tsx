@@ -5,6 +5,8 @@ import { Provider } from "@/entities";
 import ProductCard from "../../products/[id]/_components/ProductCard";
 import Link from "next/link";
 import FormUpdateProvider from "./_components/FormUpdateProvider";
+import DeleteProvider from "./_components/DeleteProvider";
+import DeleteProviderButton from "./_components/DeleteProviderButton";
 
 export default async function ProviderPage({ params: { id } }: { params: { id: string } }) {
     const response = await fetch(`${API_URL}/providers/${id}`, {
@@ -22,6 +24,9 @@ export default async function ProviderPage({ params: { id } }: { params: { id: s
                 <ProviderCard provider={provider} />
                 <div className="flex flex-col justify-center">
                     <FormUpdateProvider provider={provider} />
+                    <DeleteProvider providerName={provider.providerName}>
+                        <DeleteProviderButton providerId={provider.providerID} />
+                    </DeleteProvider>
                 </div>
             </div>
             <div className="w-8/12 flex flex-wrap py-5 gap-5 overflow-hidden overflow-y-auto">
