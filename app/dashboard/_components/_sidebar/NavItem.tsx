@@ -13,8 +13,8 @@ export default function NavItem({ icon, path }: NavItemProps) {
         <Link href={path} className="w-full flex justify-center">
             <span className={
                 path === currPath
-                ? "bg-orange-400 w-10/12 flex justify-center rounded-md transition-all py-2"
-                : "w-10/12 flex justify-center py-2 transition-all"}>
+                ? "bg-orange-400 w-10/12 flex justify-center rounded-md transition-colors py-[2vh]"
+                : "w-10/12 flex justify-center hover:bg-orange-300 rounded-md py-[2vh] transition-colors"}>
                     {icon}
                 </span>
         </Link>
