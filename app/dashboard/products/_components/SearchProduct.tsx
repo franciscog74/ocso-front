@@ -15,7 +15,6 @@ export default function SearchProduct({ products }: { products: Product[] }) {
             ));
         else
             setFilteredProducts(products);
-        console.log(filteredProducts)
     }, [filter]);
 
     const inputChange = (e: any) => {
@@ -31,6 +30,7 @@ export default function SearchProduct({ products }: { products: Product[] }) {
                 {filteredProducts.map(product => (
                     <Link
                         className="size-fit"
+                        key={product.productID}
                         href={{ pathname: `/dashboard/products/${product.productID}` }}>
                         <ProductCard product={product} key={product.productID} />
                     </Link>
