@@ -26,7 +26,7 @@ export interface Manager {
     managerEmail: string;
     managerPhone: string;
     location?: Location;
-    user: any;
+    user?: any;
 }
 
 export interface Provider {
@@ -42,5 +42,5 @@ export interface Product {
     productName: string;
     price: number;
     sealCount: number;
-    provider: Provider;
+    provider?: Provider;
 }
