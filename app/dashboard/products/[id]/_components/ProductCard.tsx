@@ -11,6 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
             <CardBody className=" text-lg">
                 <p className="w-full">Precio: <b>${product.price}</b></p>
                 <p className="w-full">Sellos: <b>{product.sealCount}</b></p>
+                <p className="w-full">Proveedor: <b>{product.provider?.providerName ?? "Ninguno"}</b></p>
             </CardBody>
         </Card>
     );

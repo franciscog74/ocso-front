@@ -1,20 +1,22 @@
 import { API_URL } from "@/constants";
-import { Product } from "@/entities";
+import { Provider } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
-import SearchProduct from "./_components/SearchProduct";
+import FormNewProduct from "./_components/FormNewProduct";
 
 export default async function ProductsPage() {
-    const response = await fetch(`${API_URL}/products`, {
+    const response = await fetch(`${API_URL}/providers`, {
         method: "GET",
         headers: {
             ...authHeaders()
         },
         next: {
-            tags: ["dashboard:products"]
+            tags: ["dashboard:providers"]
         }
     });
-    const products: Product[] = await response.json();
+    const providers: Provider[] = await response.json();
     return (
-        <SearchProduct products={products} />
+        <div className="flex flex-col w-full h-[90vh] justify-center items-center">
+            <FormNewProduct providers={providers} />
+        </div>
     );
 }
