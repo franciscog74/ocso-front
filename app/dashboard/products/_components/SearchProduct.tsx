@@ -32,8 +32,8 @@ export default function SearchProduct({
     }, [filter, providerID, products]);
 
     return (
-        <div className="h-[90vh] w-4/12 px-0 py-6 overflow-hidden">
-            <div className="pb-4 w-auto mx-10">
+        <div className="h-[90vh] w-4/12">
+            <div className="h-[28vh] pt-8 pb-4 w-auto px-10 overflow-hidden overflow-y-auto">
                 <Input
                     label="Buscar productos"
                     onChange={e => setFilter(e.target.value ?? "")}
@@ -51,7 +51,7 @@ export default function SearchProduct({
                     ))}
                 </Select>
             </div>
-            <div className="h-full w-full py-2 overflow-hidden overflow-y-auto gap-6">
+            <div className="h-[62vh] w-full py-2 overflow-hidden overflow-y-auto gap-6">
                 {filteredProducts.map(product => (
                     <Link
                         className="size-fit"
