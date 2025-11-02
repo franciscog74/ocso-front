@@ -37,8 +37,8 @@ export default function SearchProduct({
                 <Input
                     label="Buscar productos"
                     onChange={e => setFilter(e.target.value ?? "")}
+                    className="pb-6"
                 />
-                <br />
                 <Select
                     label="Filtrar por proveedor"
                     selectedKeys={[providerID]}

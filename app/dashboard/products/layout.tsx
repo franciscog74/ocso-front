@@ -28,7 +28,7 @@ export default async function ProductsLayout({ children }: { children: ReactNode
     const providers: Provider[] = await providerResponse.json();
 
     return (
-        <div className="h-[90vh] w-full flex flex-row">
+        <div className="h-[90vh] w-11/12 flex flex-row">
             <SearchProduct providers={providers} products={products} />
             <div className="flex flex-col w-8/12 h-[90vh] justify-center items-center">
                 {children}
