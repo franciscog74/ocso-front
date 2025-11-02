@@ -3,6 +3,7 @@ import { Product, Provider } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
 import ProductCard from "./_components/ProductCard";
 import FormUpdateProduct from "./_components/FormUpdateProduct";
+import DeleteProduct from "./_components/DeleteProduct";
 
 export default async function ProductPage({ params: { id } }: { params: { id: string } }) {
     const productResponse = await fetch(`${API_URL}/products/${id}`, {
@@ -32,12 +33,13 @@ export default async function ProductPage({ params: { id } }: { params: { id: st
     return (
         <div className="w-full flex flex-row">
             <div className="w-6/12 grid items-center">
-                <div className="bg-red-200 py-4 mx-10 px-10 flex flex-col w-auto rounded-lg text-center">
-                    <h1>{product.productName}</h1>
-                    <h2>{product.price}</h2>
-                    <h2>{product.sealCount}</h2>
-                    <h2>{}</h2>
+                <div className="bg-orange-400 py-4 mx-10 px-10 flex flex-col w-auto
+                rounded-lg font-bold text-white text-center items-center">
+                    <h1 className="text-2xl pb-2">Nombre del producto: {product.productName}</h1>
+                    <h2 className="text-medium">Precio: ${product.price}</h2>
+                    <h2 className="text-medium">No. de sellos: {product.sealCount}</h2>
                 </div>
+                <DeleteProduct productID={id} />
             </div>
             <div className="w-6/12 items-center">
                 <FormUpdateProduct product={product} providers={providers} />
