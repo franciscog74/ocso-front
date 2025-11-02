@@ -10,12 +10,11 @@ export default async function updateManager(managerId: string, formData: FormDat
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            if (key === "managerSalary")
-                manager[key] = +value;
-            else
-                manager[key] = value;
+            manager[key] = value;
         }
     }
+    manager.managerSalary = +manager.managerSalary;
+
     if (!manager.location) delete manager?.location;
     else manager.location = +manager.location;
 

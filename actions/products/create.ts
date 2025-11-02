@@ -11,12 +11,12 @@ export async function createProduct(formData: FormData) {
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            if (key === "price" || key === "sealCount")
-                product[key] = +value
-            else
-                product[key] = value;
+            product[key] = value;
         }
     }
+    product.price = +product.price;
+    product.sealCount = +product.sealCount;
+    
     const response = await fetch(`${API_URL}/products`, {
         method: "POST",
         body: JSON.stringify(product),
@@ -25,7 +25,7 @@ export async function createProduct(formData: FormData) {
             ...authHeaders()
         }
     }).catch();
-    if (response.status === 201){
+    if (response.status === 201) {
         const { productID }: Product = await response.json();
         revalidateTag("dashboard:products");
         redirect(`/dashboard/products/${productID}`);

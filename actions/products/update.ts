@@ -10,12 +10,12 @@ export async function updateProduct(productID: string, formData: FormData) {
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            if (key === "price" || key === "sealCount")
-                product[key] = +value
-            else
-                product[key] = value;
+            product[key] = value;
         }
     }
+    product.price = +product.price;
+    product.sealCount = +product.sealCount;
+    
     const response = await fetch(`${API_URL}/products/${productID}`, {
         method: "PATCH",
         body: JSON.stringify(product),

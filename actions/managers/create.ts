@@ -11,12 +11,11 @@ export default async function createManager(formData: FormData) {
     for (const key of formData.keys()) {
         const value = formData.get(key);
         if (value) {
-            if (key === "managerSalary")
-                manager[key] = +value;
-            else
-                manager[key] = value;
+            manager[key] = value;
         }
     }
+    manager.managerSalary = +manager.managerSalary;
+
     if (!manager.location) delete manager?.location;
     else manager.location = +manager.location;
     const response = await fetch(`${API_URL}/managers`, {
@@ -27,7 +26,7 @@ export default async function createManager(formData: FormData) {
             ...authHeaders()
         }
     }).catch();
-    if (response.status === 201){
+    if (response.status === 201) {
         const { managerId }: Manager = await response.json();
         revalidateTag("dashboard:managers");
         redirect(`/dashboard/managers/${managerId}`);
