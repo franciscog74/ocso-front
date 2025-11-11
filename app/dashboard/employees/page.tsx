@@ -1,7 +1,7 @@
 import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
-import EmployeeCard from "../@locations/_components/EmployeeCard";
+import EmployeePhotoCard from "./[id]/_components/EmployeePhotoCard";
 
 export default async function EmployeesPage() {
     const response = await fetch(`${API_URL}/employees`, {
@@ -15,9 +15,9 @@ export default async function EmployeesPage() {
     });
     const employees: Employee[] = await response.json();
     return (
-        <div className="w-4/12 h-[90vh]">
+        <div className="flex flex-row w-11/12 p-5 h-[90vh] overflow-hidden overflow-y-auto">
             {employees.map(employee => (
-                <EmployeeCard employee={employee} key={employee.employeeId} />
+                <EmployeePhotoCard employee={employee} key={employee.employeeId} />
             ))}
         </div>
     );
