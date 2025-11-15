@@ -1,18 +1,10 @@
-import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
-import { authHeaders } from "@/helpers/authHeaders";
+import getImage from "@/helpers/getImage";
 import { Button, Card, CardBody, CardFooter, CardHeader, Divider, Image } from "@nextui-org/react";
 import Link from "next/link";
 
 export default async function EmployeePhotoCard({ employee }: { employee: Employee }) {
-    const response = await fetch(`${API_URL}/employees/${employee.employeeId}/photo`, {
-        headers: {
-            ...authHeaders()
-        },
-        next: {
-            tags: ["dashboard:employees", `dashboard:employees:${employee.employeeId}`]
-        }
-    });
+    const imageSrc = await getImage(employee.employeeId);
 
     const cardFooter = (
         <CardFooter className="absolute bottom-0 py-2 h-14">
@@ -22,7 +14,7 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
         </CardFooter>
     );
 
-    if (response.status !== 200) {
+    if (!imageSrc) {
         return (
             <Card className="m-5 max-h-72 min-w-72">
                 <CardHeader>
@@ -40,8 +32,6 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
         );
     }
 
-    const type = response.headers.get("content-type")
-    const imageSrc = `data:${type};base64,` + Buffer.from(await response.bytes()).toString("base64");
     return (
         <Card className="m-5 max-h-72 max-w-72" isFooterBlurred>
             <CardHeader className="absolute top-0 bg-black bg-opacity-25 z-10">
@@ -49,7 +39,6 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
                     {employee.employeeName} {employee.employeeLastName}
                 </h1>
             </CardHeader>
-            <Divider />
             <Image src={imageSrc} className="z-0" classNames={{ img: "size-72" }} />
             {cardFooter}
         </Card>
