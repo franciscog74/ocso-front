@@ -39,7 +39,7 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
                     {employee.employeeName} {employee.employeeLastName}
                 </h1>
             </CardHeader>
-            <Image src={imageSrc} className="z-0" classNames={{ img: "size-72" }} />
+            <Image src={imageSrc} className="z-0 object-cover" classNames={{ img: "size-72" }} />
             {cardFooter}
         </Card>
     );
