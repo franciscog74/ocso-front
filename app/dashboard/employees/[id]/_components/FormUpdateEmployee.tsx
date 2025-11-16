@@ -20,9 +20,7 @@ export default async function FormUpdateEmployee({ employee }: { employee: Emplo
             <Input isRequired name="employeeEmail" defaultValue={employee.employeeEmail}
                 label="Email"
             />
-            <Input name="employeePhoto" type="file" defaultValue={employee.employeePhoto}
-                label="Foto" accept="image/png,image/jpeg"
-            />
+            <Input name="employeePhoto" type="file" label="Foto" accept="image/png,image/jpeg" />
             <Button type="submit" color="primary">
                 Actualizar datos
             </Button>

@@ -1,7 +1,7 @@
 import { API_URL } from "@/constants";
 import { Employee } from "@/entities";
 import { authHeaders } from "@/helpers/authHeaders";
-import EmployeePhotoCard from "./[id]/_components/EmployeePhotoCard";
+import EmployeePhotoCard from "./_components/EmployeePhotoCard";
 
 export default async function EmployeesPage() {
     const response = await fetch(`${API_URL}/employees`, {
