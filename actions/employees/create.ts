@@ -10,7 +10,10 @@ export default async function createEmployee(formData: FormData) {
     const employee: any = {};
     for (const key of formData.keys()) {
         const value = formData.get(key);
-        if (!key.startsWith("$ACTION")) {
+        if (key === "location") {
+            employee[key] = value ? +value : null;
+        }
+        else if (!key.startsWith("$ACTION")) {
             employee[key] = value;
         }
     }

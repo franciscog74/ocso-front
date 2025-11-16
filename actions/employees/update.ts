@@ -9,7 +9,10 @@ export default async function updateEmployee(employeeId: string, formData: FormD
     const employee: any = {};
     for (const key of formData.keys()) {
         const value = formData.get(key);
-        if (!key.startsWith("$ACTION")) {
+        if (key === "location") {
+            employee[key] = value ? +value : null;
+        }
+        else if (!key.startsWith("$ACTION")) {
             employee[key] = value;
         }
     }
