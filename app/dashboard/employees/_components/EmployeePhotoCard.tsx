@@ -16,7 +16,7 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
 
     if (!imageSrc) {
         return (
-            <Card className="m-5 max-h-72 min-w-72">
+            <Card rel={employee.location?.locationId + ""} className="m-5 h-72 min-w-72">
                 <CardHeader>
                     <h1 className="font-bold text-xl">
                         {employee.employeeName} {employee.employeeLastName}
@@ -33,7 +33,7 @@ export default async function EmployeePhotoCard({ employee }: { employee: Employ
     }
 
     return (
-        <Card className="m-5 max-h-72 max-w-72" isFooterBlurred>
+        <Card className="m-5 max-h-72 max-w-72" isFooterBlurred rel={employee.location?.locationId + ""}>
             <CardHeader className="absolute top-0 bg-black bg-opacity-25 z-10">
                 <h1 className="font-bold text-xl text-white drop-shadow-sm">
                     {employee.employeeName} {employee.employeeLastName}
