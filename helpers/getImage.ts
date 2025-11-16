@@ -4,6 +4,7 @@ import { authHeaders } from "./authHeaders";
 
 export default async function getImage(employeeId: string) {
     const response = await fetch(`${API_URL}/employees/${employeeId}/photo`, {
+        method: "GET",
         headers: {
             ...authHeaders()
         },
@@ -15,7 +16,7 @@ export default async function getImage(employeeId: string) {
     var imageSrc;
     
     if (response.status === 200) {
-        const type = response.headers.get("content-type")
+        const type = response.headers.get("content-type");
         imageSrc = `data:${type};base64,` + Buffer.from(await response.bytes()).toString("base64");
     }
 
