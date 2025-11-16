@@ -2,7 +2,7 @@ import { Employee } from "@/entities";
 import { Image } from "@nextui-org/react";
 import getImage from "@/helpers/getImage";
 import Link from "next/link";
-
+import DeleteEmployeeButton from "./DeleteEmployeeButton";
 
 export default async function EmployeeDataCard({ employee }: { employee: Employee }) {
     const imageSrc = await getImage(employee.employeeId);
@@ -24,6 +24,7 @@ export default async function EmployeeDataCard({ employee }: { employee: Employe
                         {employee.location.locationName}
                     </Link>
                 ) : "Ninguna"}</h1>
+                <DeleteEmployeeButton employeeId={employee.employeeId} />
             </div>
             {imageSrc ? (
                 <>
