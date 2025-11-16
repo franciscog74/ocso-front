@@ -6,6 +6,7 @@ export default function Header() {
             <Image
                 src="/Oxxo_Logo.svg"
                 alt="Logo de Ocso"
+                priority
                 width={0}
                 height={0}
                 style={{width: "6vw"}}
