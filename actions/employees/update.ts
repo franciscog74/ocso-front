@@ -2,7 +2,7 @@
 
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHeaders";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function updateEmployee(employeeId: string, formData: FormData) {
@@ -43,7 +43,6 @@ export default async function updateEmployee(employeeId: string, formData: FormD
     if (response.status === 200 || response.status === 201) {
         revalidateTag("dashboard:employees");
         revalidateTag(`dashboard:employees:${employeeId}`);
-        revalidatePath(`/dashboard/employees/${employeeId}`, "page");
         redirect(`/dashboard/employees/${employeeId}`);
     }
 }
