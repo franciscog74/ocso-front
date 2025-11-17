@@ -4,7 +4,7 @@ import { Button, Modal, ModalBody, ModalContent, useDisclosure } from "@nextui-o
 import { ReactNode } from "react";
 import { LuUser } from "react-icons/lu";
 
-export default function CreateUser({ children }: { children: ReactNode }) {
+export default function UserModal({ children }: { children: ReactNode }) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
     return (

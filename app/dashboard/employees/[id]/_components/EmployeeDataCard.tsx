@@ -3,8 +3,9 @@ import { Image } from "@nextui-org/react";
 import getImage from "@/helpers/getImage";
 import Link from "next/link";
 import DeleteEmployeeButton from "./DeleteEmployeeButton";
-import CreateUser from "./CreateUser";
+import UserModal from "./UserModal";
 import FormCreateUser from "./FormCreateUser";
+import FormUpdateUser from "./FormUpdateUser";
 
 export default async function EmployeeDataCard({ employee }: { employee: Employee }) {
     const imageSrc = await getImage(employee.employeeId);
@@ -27,11 +28,13 @@ export default async function EmployeeDataCard({ employee }: { employee: Employe
                     </Link>
                 ) : "Ninguna"}</h1>
                 <div className="relative flex flex-row bottom-[-1.5rem] justify-center gap-4 my-4">
-                    {employee.user ? null : (
-                        <CreateUser>
+                    <UserModal>
+                        {employee.user ? (
+                            <FormUpdateUser user={employee.user} />
+                        ) : (
                             <FormCreateUser employee={employee} />
-                        </CreateUser>
-                    )}
+                        )}
+                    </UserModal>
                     <DeleteEmployeeButton employeeId={employee.employeeId} />
                 </div>
             </div>
