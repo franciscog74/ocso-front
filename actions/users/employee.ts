@@ -2,6 +2,7 @@
 
 import { API_URL } from "@/constants";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function registerEmployee(employeeId: string, formData: FormData) {
     const user: any = {};
@@ -18,5 +19,6 @@ export default async function registerEmployee(employeeId: string, formData: For
     if (response.status === 201) {
         revalidateTag("dashboard:employees");
         revalidateTag(`dashboard:employees:${employeeId}`);
+        redirect(`/dashboard/employees/${employeeId}`);
     }
 }
