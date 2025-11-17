@@ -3,9 +3,10 @@ import { Image } from "@nextui-org/react";
 import getImage from "@/helpers/getImage";
 import Link from "next/link";
 import DeleteEmployeeButton from "./DeleteEmployeeButton";
-import UserModal from "./UserModal";
+import GenericModal from "../../../_components/GenericModal";
 import FormCreateUser from "./FormCreateUser";
-import FormUpdateUser from "./FormUpdateUser";
+import FormUpdateUser from "../../../_components/FormUpdateUser";
+import { LuUser } from "react-icons/lu";
 
 export default async function EmployeeDataCard({ employee }: { employee: Employee }) {
     const imageSrc = await getImage(employee.employeeId);
@@ -28,13 +29,13 @@ export default async function EmployeeDataCard({ employee }: { employee: Employe
                     </Link>
                 ) : "Ninguna"}</h1>
                 <div className="relative flex flex-row bottom-[-1.5rem] justify-center gap-4 my-4">
-                    <UserModal>
+                    <GenericModal button={<LuUser size={20} />}>
                         {employee.user ? (
                             <FormUpdateUser user={employee.user} />
                         ) : (
                             <FormCreateUser employee={employee} />
                         )}
-                    </UserModal>
+                    </GenericModal>
                     <DeleteEmployeeButton employeeId={employee.employeeId} />
                 </div>
             </div>
